@@ -17,60 +17,78 @@ layout: default
 			end = document.getElementById('End').value;
 			mplayer.playBetween(start,end);
 		}
-        function loopBetween() {
-            var start = document.getElementById('Start').value;
-            var end = document.getElementById('End').value;
-            mplayer.loopBetween(start, end);
-        }
-		function getValues(){
+  //       function loopBetween() {
+  //           var start = document.getElementById('Start').value;
+  //           var end = document.getElementById('End').value;
+  //           mplayer.loopBetween(start, end);
+  //       }
+		// function getValues(){
+		// 	var values = mplayer.getValueSlider();
+  //           console.log(values);
+		// 	document.getElementById('Start').value=videojs.round(values.start,2);
+		// 	document.getElementById('End').value=videojs.round(values.end,2);
+		// 	$.url
+		// }
+		function setShareLinkFromClip(){
 			var values = mplayer.getValueSlider();
             console.log(values);
-			document.getElementById('Start').value=videojs.round(values.start,2);
-			document.getElementById('End').value=videojs.round(values.end,2);
+			var start = videojs.round(values.start,2);
+			var end = videojs.round(values.end,2);
+			var link = "http://jamiefolsom.github.io/video/2013/11/20/barbara.html?"+"start="+start+"&end="+end;
+			$("#share-link").val(link);
+		}
+		function setClipFromQueryParams(){
+			var url = $.url(); // parse the current page URL
+			start = url.param("start");
+			end = url.param("end");
+			mplayer.playBetween(start,end);
 		}
 		
-		function showhide(){
-			var plugin=mplayer.rangeslider.options;
-			if(plugin.hidden)
-				mplayer.showSlider();
-			else
-				mplayer.hideSlider();
-		}
-		function lockunlock(){
-			var plugin=mplayer.rangeslider.options;
-			if(plugin.locked)
-				mplayer.unlockSlider();
-			else
-				mplayer.lockSlider();
-		}
-		function showhidePanel(){
-			var plugin=mplayer.rangeslider.options;
-			if(!plugin.panel)
-				mplayer.showSliderPanel();
-			else
-				mplayer.hideSliderPanel();
-		}
-		function showhideControlTime(){
-			var plugin=mplayer.rangeslider.options;
-			if(!plugin.controlTime)
-				mplayer.showControlTime();
-			else
-				mplayer.hideControlTime();
-		}
+		// function showhide(){
+		// 	var plugin=mplayer.rangeslider.options;
+		// 	if(plugin.hidden)
+		// 		mplayer.showSlider();
+		// 	else
+		// 		mplayer.hideSlider();
+		// }
+		// function lockunlock(){
+		// 	var plugin=mplayer.rangeslider.options;
+		// 	if(plugin.locked)
+		// 		mplayer.unlockSlider();
+		// 	else
+		// 		mplayer.lockSlider();
+		// }
+		// function showhidePanel(){
+		// 	var plugin=mplayer.rangeslider.options;
+		// 	if(!plugin.panel)
+		// 		mplayer.showSliderPanel();
+		// 	else
+		// 		mplayer.hideSliderPanel();
+		// }
+		// function showhideControlTime(){
+		// 	var plugin=mplayer.rangeslider.options;
+		// 	if(!plugin.controlTime)
+		// 		mplayer.showControlTime();
+		// 	else
+		// 		mplayer.hideControlTime();
+		// }
 	</script>
-    <div id="fieldSelection">
+<!--     <div id="fieldSelection1">
 		<legend>Actions</legend>
 		<button class="btn" onClick="showhide()">Show/Hide RS</button>
 		<button class="btn" onClick="lockunlock()">Lock/Unlock RS</button>
 		<button class="btn" onClick="showhidePanel()">show/hide Panel</button>
 		<button class="btn" onClick="showhideControlTime()">show/hide ControlTime</button>
 	</div>
-	
+ -->	
 	<div id="fieldSelection">
-		<legend>Select a section of the video</legend>
+<!-- 		<legend>Select a section of the video</legend>
 		<button class="btn" onClick="playBetween()">Play Between</button>
-        <div class="btn" onClick="loopBetween()">Loop Between</button>
+        <button class="btn" onClick="loopBetween()">Loop Between</button>
 		<button class="btn" onClick="getValues()">Get Arrow Values</button><br/>
-		Start (seconds):<input type="text" value="2" id="Start">
-		End (seconds): <input type="text" value="5" id="End">
+ -->		<button class="btn" onClick="setClipFromQueryParams()">Set Clip From URL</button><br/>
+		<button class="btn" onClick="setShareLinkFromClip()">Set Share Link From Clip</button><br/>
+<!-- 		Start (seconds):<input type="text" value="2" id="Start">
+		End (seconds): <input type="text" value="5" id="End"><br>
+ -->		Share link: <input type="text" value="" id="share-link">
 	</div>

@@ -1,4 +1,65 @@
 name: Video Clip Selector
+description: 'Instructor: <a href="http://sethmnookin.com" target="_blank">Seth Mnookin</a>. Mon 2pm-5pm, <a href="http://whereis.mit.edu/?go=26">26-142</a>'
 markdown: redcarpet
 pygments: true
+permalink: none
 url: "http://jamiefolsom.github.io/delicatessen"
+prose:
+  rooturl: '_posts'
+  siteurl: "http://jamiefolsom.github.io/delicatessen"
+  relativeLinks: 'http://jamiefolsom.github.io/delicatessen/links.jsonp'
+  media: 'assets'
+  metadata:
+    _posts:
+      - name: "author"
+        field:
+          element: "text"
+          label: "Author"
+          placeholder: "Enter the name of the Author of this article"
+      - name: "date"
+        field:
+          element: "text"
+          label: "Order"
+          value: ""
+      - name: "category"
+        field:
+          element: "select"
+          label: "Genre"
+          options:
+            - name: "Drama"
+              value: "drama"
+      - name: "title"
+        field:
+          element: "text"
+          label: "Title"
+          value: ""
+      - name: "layout"
+        field:
+          element: "hidden"
+          value: "post"
+      - name: "tags"
+        field:
+          element: "multiselect"
+          label: "Add Tags"
+          placeholder: "Choose Tags"
+          options:
+            - name: "Subtitles"
+              value: "subtitles"
+            - name: "Dubbed"
+              value: "dubbed"
+           
+    _posts/static:
+      - name: "layout"
+        field:
+          element: "hidden"
+          value: "page"
+      - name: "title"
+        field:
+          element: "text"
+          label: "Title"
+          value: ""
+      - name: "permalink"
+        field:
+          element: "text"
+          label: "Permalink"
+          value: ""

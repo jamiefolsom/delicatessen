@@ -3,19 +3,26 @@ layout: default
 ---
 <h2 class="title">{{ page.title }}</h2>
 <p class="meta">{{ page.date | date_to_string }}</p>
+<button type="button" class="btn btn-default" onClick="setClipFromQueryParams()">Set Clip From URL</button>
 {{ content }}
 <div class="form-group">
-<button type="button" class="btn btn-default" onClick="setClipFromQueryParams()">Set Clip From URL</button>
-
-<button type="button" class="btn btn-default" onClick="setShareLinkFromClip()">Set Share Link From Clip</button><br/>
-
 Share link: <input type="text" value="" id="share-link" class="form-control">
 </div>
-<script>
-	var options ={hidden:false},
-		mplayer=videojs("vid1");
-		mplayer.rangeslider(options);
-     
+
+<script type="text/javascript">
+	var options = {'hidden':false};
+	var mplayer = videojs("vid1");
+	mplayer.rangeslider(options);
+	 
+	$(".vjs-rangeslider-handle").on("mouseup", function() {
+		var values = mplayer.getValueSlider();
+		console.log(values);
+		var start = videojs.round(values.start,2);
+		var end = videojs.round(values.end,2);
+		var link = "http://jamiefolsom.github.io/delicatessen/2013/11/20/barbara.html?"+"start="+start+"&end="+end;
+		$("#share-link").val(link);
+	});
+
 	function playBetween(){
 		var start,end;
 		start = document.getElementById('Start').value;
@@ -24,7 +31,7 @@ Share link: <input type="text" value="" id="share-link" class="form-control">
 	}
 	function setShareLinkFromClip(){
 		var values = mplayer.getValueSlider();
-        console.log(values);
+	    console.log(values);
 		var start = videojs.round(values.start,2);
 		var end = videojs.round(values.end,2);
 		var link = "http://jamiefolsom.github.io/delicatessen/2013/11/20/barbara.html?"+"start="+start+"&end="+end;
@@ -36,5 +43,4 @@ Share link: <input type="text" value="" id="share-link" class="form-control">
 		end = url.param("end");
 		mplayer.playBetween(start,end);
 	}
-	
 </script>

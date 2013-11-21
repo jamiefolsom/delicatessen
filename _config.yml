@@ -1,10 +1,10 @@
 name: Video Clip Selector
-description: 'Instructor: <a href="http://sethmnookin.com" target="_blank">Seth Mnookin</a>. Mon 2pm-5pm, <a href="http://whereis.mit.edu/?go=26">26-142</a>'
+description: 'A demonstration of rangeslider.js and video.js using jekyll, github pages and bootstrap.'
 markdown: redcarpet
 pygments: true
 permalink: date
 url: "http://jamiefolsom.github.io/delicatessen"
-baseurl: "/delicatessen"
+# baseurl: "/delicatessen"
 prose:
   rooturl: '_posts'
   siteurl: "http://jamiefolsom.github.io/delicatessen"

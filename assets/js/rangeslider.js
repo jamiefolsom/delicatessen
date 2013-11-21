@@ -521,6 +521,8 @@ videojs.SeekRSBar.prototype.setPosition = function(index,left,writeControlTime) 
 	//index = 0 for left side, index = 1 for right side
 	var index = index || 0;
 	
+	var player = this;
+
 	// Position shouldn't change when handle is locked
 	if(this.rs.options.locked)
 		return false;
